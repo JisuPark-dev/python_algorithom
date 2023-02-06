@@ -5,17 +5,6 @@ n = int(input())
 arr = sorted(list(map(int, input().split())))
 
 cnt =0
-# for i in range(2,len(arr)):
-#     breaker =False
-#     for j in range(0, i):
-#         for k in range(j+1,i+1):
-#             if arr[k] + arr[j] == arr[i]:
-#                 cnt+=1
-#                 breaker = True
-#                 break
-#         if breaker == True:
-#             break
-# print(cnt)
 
 for k in range(n):
     find = arr[k]
@@ -23,7 +12,7 @@ for k in range(n):
     j = n-1
     while i<j:
         if arr[i] + arr[j] == find:
-            if i!=k and j!=k:
+            if i!=k and j!=k: #i,j 가 k와 다르도록 조건 추가
                 cnt+=1
                 break
             elif i==k:
