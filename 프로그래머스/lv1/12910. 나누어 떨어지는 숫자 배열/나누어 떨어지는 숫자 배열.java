@@ -1,23 +1,12 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        int count = 0;
-        for(int i: arr){
-            if(i%divisor==0)count++;
-        }
         
-        if(count == 0){
-            int[] answer = {-1};
-            return answer;
-        }
-        int[] answer = new int[count];
-        int number=0;
-        for(int i=0; i<arr.length;i++){
-            if(arr[i]%divisor == 0){
-                answer[number] = arr[i];
-                number++;
-            }
+        int[] answer = Arrays.stream(arr).sorted().filter(e->e%divisor==0).toArray();
+        if(answer.length == 0){
+            int[] answers = {-1};
+            return answers;
         }
         Arrays.sort(answer);
         return answer;
