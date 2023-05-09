@@ -51,7 +51,7 @@ public class Main {
 				// idx 보다 앞에 있는 원소들을 모두 뒤로 보낸다. (2번 연산)
 				for(int j = 0; j < target_idx; j++) {
 					int temp = deque.pollFirst();
-					deque.offerLast(temp);
+					deque.addLast(temp);
 					count++;
 				}
 			}
@@ -59,7 +59,7 @@ public class Main {
 				// idx를 포함한 뒤에 있는 원소들을 모두 앞으로 보낸다. (3번 연산)
 				for(int j = 0; j < deque.size() - target_idx; j++) {
 					int temp = deque.pollLast();
-					deque.offerFirst(temp);
+					deque.addFirst(temp);
 					count++;
 				}
 			
