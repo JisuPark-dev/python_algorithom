@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main{
     public static void main(String[] args){
@@ -14,10 +12,19 @@ public class Main{
 
         int x = scanner.nextInt();
 
-        int cnt = 0;
-        for(int i: arr){
-            if(i == x)cnt++;
+        HashMap<Integer,Integer> map1 = new HashMap<Integer,Integer>();
+        for(int i =0; i<n; i++){
+            if(map1.get(arr[i]) == null){
+                map1.put(arr[i], 1);
+            }else{
+                map1.put(arr[i],map1.get(arr[i])+1);
+            }
         }
-        System.out.println(cnt);
+
+        if(map1.get(x) == null){
+            System.out.println("0");
+        }else{
+            System.out.println(map1.get(x));
+        }
     }
 }
