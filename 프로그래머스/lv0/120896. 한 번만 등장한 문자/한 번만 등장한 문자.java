@@ -1,19 +1,25 @@
-import java.util.Arrays;
+import java.util.TreeMap;
 
 class Solution {
     public String solution(String s) {
-        String answer = "";
-        if(s.length() == 0) return "";
-        if(s.length() == 1) return s;
-        char[] chars = s.toCharArray();
-        Arrays.sort(chars);//s문자열 정렬
+        TreeMap<String, Integer> map = new TreeMap<>();
+        StringBuilder answer = new StringBuilder();
         
-        if(chars[0]!=chars[1])answer+=chars[0];
-        
-        for(int i =1; i<chars.length-1; i++){
-            if(chars[i]!=chars[i-1]&& chars[i]!= chars[i+1])answer+=chars[i];
+        for(int i = 0; i< s.length(); i++){
+            String tmp = String.valueOf(s.charAt(i));
+            if(map.containsKey(tmp)){
+                map.put(tmp,map.get(tmp)+1);
+            }else{
+                map.put(tmp, 1);
+            }
         }
-        if(chars[chars.length-2]!=chars[chars.length-1])answer+=chars[chars.length-1];
-        return answer;
+        
+        map.forEach((key, value)->{
+            if(value == 1){
+                answer.append(key);
+            }
+        });
+        
+    return answer.toString();
     }
 }
